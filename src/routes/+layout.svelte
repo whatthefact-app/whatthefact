@@ -2,11 +2,6 @@
 	import '../app.css';
 </script>
 
-<slot />
-
-<!-- if need to access tailwind styles in global -->
-<!-- <style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.gray.500);
-	}
-</style> -->
+<main class="flex flex-col px-5 py-10">
+	<slot />
+</main>

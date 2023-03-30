@@ -11,7 +11,7 @@ export interface Database {
     Tables: {
       facts: {
         Row: {
-          answers: Json
+          answers: string[]
           created_at: string | null
           deleted_at: string | null
           fun_fact: string | null
@@ -19,10 +19,11 @@ export interface Database {
           id: string
           question: string
           question_image_url: string | null
+          slug: string | null
           updated_at: string | null
         }
         Insert: {
-          answers: Json
+          answers: string[]
           created_at?: string | null
           deleted_at?: string | null
           fun_fact?: string | null
@@ -30,10 +31,11 @@ export interface Database {
           id?: string
           question: string
           question_image_url?: string | null
+          slug?: string | null
           updated_at?: string | null
         }
         Update: {
-          answers?: Json
+          answers?: string[]
           created_at?: string | null
           deleted_at?: string | null
           fun_fact?: string | null
@@ -41,6 +43,7 @@ export interface Database {
           id?: string
           question?: string
           question_image_url?: string | null
+          slug?: string | null
           updated_at?: string | null
         }
       }
