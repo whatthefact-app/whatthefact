@@ -1,24 +1,28 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { page } from '$app/stores';
 	import Section from '../../components/Section.svelte';
 	import SectionHeading from '../../components/SectionHeading.svelte';
+	import { facts } from '../../stores/facts';
+	import { shuffle } from '../../utils/shuffle';
 
 	const { params } = $page;
 
-	export let data: PageData;
-	const { fact } = data;
+	const fact = $facts[0];
+	const proposals = shuffle([...fact.answers]);
+	const correctAnswer = fact.answers[0];
 
-	console.log('page', $page.params);
+	function getNextStep({ proposal, answer }: { proposal: string; answer: string }) {
+		return proposal === answer ? `/${params.fact}/a?c=y` : `/${params.fact}/a?c=n`;
+	}
 </script>
 
 <Section>
 	<SectionHeading>{fact.question}</SectionHeading>
 
 	<ol class="list-decimal">
-		{#each fact.answers as answer}
+		{#each proposals as proposal}
 			<li>
-				<a href={`/${params.fact}/answer`}>{answer}</a>
+				<a href={getNextStep({ proposal, answer: correctAnswer })}>{proposal}</a>
 			</li>
 		{/each}
 	</ol>

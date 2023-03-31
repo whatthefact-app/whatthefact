@@ -2,7 +2,7 @@ import { supabase } from '$lib/server/supabaseClient';
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
-export const load = (async ({ params }) => {
+export const load = (async ({ params, url }) => {
 	const { data } = await supabase.from('facts').select().eq('slug', params.fact);
 
 	if (!data?.length) {
@@ -11,7 +11,10 @@ export const load = (async ({ params }) => {
 		});
 	}
 
+	const query = url.searchParams.get('c');
+
 	return {
-		fact: data[0]
+		fact: data[0],
+		query
 	};
 }) satisfies PageServerLoad;
