@@ -6,6 +6,8 @@
 
 	export let data: PageData;
 
+	console.log('data.location', data.location);
+
 	const shuffledFacts = shuffle(data.facts);
 	facts.set(shuffledFacts);
 </script>
