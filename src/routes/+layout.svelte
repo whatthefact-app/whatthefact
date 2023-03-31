@@ -2,6 +2,6 @@
 	import '../app.css';
 </script>
 
-<main class="flex flex-col px-5 py-10">
+<main class="flex min-h-[100dvh] flex-col bg-background px-6 text-black">
 	<slot />
 </main>

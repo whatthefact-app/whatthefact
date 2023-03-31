@@ -10,36 +10,31 @@
 	import { countries } from '../constants/constants';
 
 	export let data: PageData;
-	const { country, facts: dbFacts } = data;
 
 	let currentCountry: string;
 	let paramCountry = $page.url.searchParams.get('country');
 
-	currentCountry = paramCountry || country;
+	currentCountry = paramCountry || data.country;
 
-	const shuffledFacts: Fact[] = shuffle(dbFacts);
-	facts.set(shuffledFacts);
-
-	const isCountryKnown = Object.keys(countries).includes(country);
-	const formattedCountry = countries[country as Country];
+	$: facts.set(shuffle(data.facts));
 
 	$: if (browser) goto(`/?country=${currentCountry}`, { keepFocus: true, invalidateAll: true });
 </script>
 
-<section class="flex flex-col items-center gap-12">
-	<h1 class="text-5xl font-bold text-center">Welcome to What The Fact 👋</h1>
+<section class="flex flex-col items-center gap-12 pt-16">
+	<h1 class="text-center font-heading text-heading font-black leading-none">
+		Test your knowledge about nature around you.
+	</h1>
 
-	{#if isCountryKnown}
-		<p>We detected you're in {formattedCountry}</p>
-	{/if}
+	<p>You're playing in</p>
 
 	<form>
-		<select bind:value={currentCountry}>
+		<select bind:value={currentCountry} class="">
 			<option value="PT" selected={currentCountry === 'PT'}>Portugal</option>
 			<option value="FR" selected={currentCountry === 'FR'}>France</option>
-			<!-- <option value="US" selected={currentCountry === 'US'}>USA</option> -->
+			<option value="US" selected={currentCountry === 'US'}>USA</option>
 		</select>
 	</form>
 
-	<NavigationButton href={`/${$facts[0].id}`}>start</NavigationButton>
+	<NavigationButton href={`/${$facts[0].id}`}>Play</NavigationButton>
 </section>

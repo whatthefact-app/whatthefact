@@ -2,6 +2,9 @@
 	export let href: string;
 </script>
 
-<a {href} class="text-xl bg-slate-900 text-white px-5 py-2 rounded-md">
+<a
+	{href}
+	class="grid h-[68px] w-full max-w-xs place-items-center rounded-[29px] bg-brand px-8 font-heading text-[1.6875rem] font-extrabold text-black"
+>
 	<slot />
 </a>

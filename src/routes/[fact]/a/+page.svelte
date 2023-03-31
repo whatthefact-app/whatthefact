@@ -29,6 +29,6 @@
 	{#if nextFact}
 		<NavigationButton href={`/${nextFact.id}`}>continue</NavigationButton>
 	{:else}
-		<NavigationButton href="/share">continue</NavigationButton>
+		<NavigationButton href="/share">finish</NavigationButton>
 	{/if}
 </Section>

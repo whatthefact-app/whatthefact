@@ -9,6 +9,8 @@ export const load = (async ({ request, url }) => {
 		url.searchParams.get('country') || request.headers.get('x-vercel-ip-country') || 'PT';
 	const { data } = await supabase.from('facts').select().eq('country', country);
 
+	console.log('data', data);
+
 	if (!data?.length) {
 		throw error(404, {
 			message: 'Not found'

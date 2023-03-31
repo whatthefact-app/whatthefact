@@ -13,22 +13,21 @@
 	function getNextStep({ proposal, answer }: { proposal: string; answer: string }) {
 		return proposal === answer ? `/${params.fact}/a?c=y` : `/${params.fact}/a?c=n`;
 	}
-
-	// 3 routes
-	// /
-	// /[slug]
-	// /[slug]/a/[answer_index]
-	// /[slug]/share
 </script>
 
 <Section>
+	<div class="mt-6 rounded-xl bg-white px-3 font-heading text-[1.3125rem] font-semibold">1/5</div>
+
 	<SectionHeading>{question}</SectionHeading>
 
-	<ol class="list-decimal">
+	<ul class="flex w-full flex-col items-start gap-4">
 		{#each proposals as proposal}
-			<li>
-				<a href={getNextStep({ proposal, answer: answer1 })}>{proposal}</a>
+			<li class="w-full">
+				<a
+					class="flex grow rounded-[20px] bg-white px-6 py-5 text-base"
+					href={getNextStep({ proposal, answer: answer1 })}>{proposal}</a
+				>
 			</li>
 		{/each}
-	</ol>
+	</ul>
 </Section>
