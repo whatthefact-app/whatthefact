@@ -22,11 +22,13 @@
 		{isCorrect ? 'correct' : 'wrong'}
 	</p>
 
-	<p>{fact.answers[0]}</p>
+	<p>{fact.answer1}</p>
+
+	<p>{fact.fun_fact}</p>
 
 	{#if nextFact}
-		<NavigationButton href={`/${nextFact.slug}`}>continue</NavigationButton>
+		<NavigationButton href={`/${nextFact.id}`}>continue</NavigationButton>
 	{:else}
-		<p>end of the game</p>
+		<NavigationButton href="/share">continue</NavigationButton>
 	{/if}
 </Section>

@@ -1,13 +1,13 @@
-import { supabase } from '$lib/server/supabaseClient';
+import { supabase } from '$lib/supabaseClient';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { shuffle } from '../utils/shuffle';
+import type { Fact } from '../types/types';
 
-export const load = (async (event) => {
-	const { data } = await supabase.from('facts').select();
-
-	console.log('event', event);
-	console.log('event.getClientAddress(', event.getClientAddress());
-	console.log('event.request.headers', event.request.headers);
+export const load = (async ({ request, url }) => {
+	const country =
+		url.searchParams.get('country') || request.headers.get('x-vercel-ip-country') || 'PT';
+	const { data } = await supabase.from('facts').select().eq('country', country);
 
 	if (!data?.length) {
 		throw error(404, {
@@ -16,19 +16,7 @@ export const load = (async (event) => {
 	}
 
 	return {
-		facts: data,
-		location: event.request.headers.get('x-vercel-ip-country')
+		facts: shuffle(data).slice(0, 5) as Fact[],
+		country
 	};
 }) satisfies PageServerLoad;
-
-// import geoip from 'geoip-lite';
-
-// export async function get({ request }) {
-//   const ip = request.headers['x-forwarded-for'] || request.connection.remoteAddress;
-//   const geo = geoip.lookup(ip);
-//   const country = geo?.country;
-
-//   return {
-//     body: { country }
-//   };
-// }
