@@ -19,7 +19,6 @@
 	const proposals = shuffle([answer1, answer2, answer3, answer4]);
 
 	type Answer = Fact['answer1'];
-
 	let selectedProposal: Answer | null = null;
 
 	function handleSelect(proposal: Answer) {
