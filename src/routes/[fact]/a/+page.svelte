@@ -32,21 +32,29 @@
 
 <Section className="gap-10 py-10 bg-white h-full">
 	<header class="flex flex-col items-center gap-4">
-		<div class="h-12">
-			{#if !isShared}
+		{#if !isShared}
+			<div class="h-12">
 				<img src={isCorrect ? peacock : snail} alt={isCorrect ? 'Peacock' : 'Snail'} />
-			{/if}
-		</div>
+			</div>
+		{:else}
+			<div class="flex flex-col gap-4">
+				<SectionHeading>What the <span class="text-purple-500"> fact?! </span></SectionHeading>
 
-		<div>
-			{#if !isShared}
+				<p class="text-center text-lg">{fact.question}</p>
+
+				<h3 class="text-center font-heading text-[27px] font-bold">{fact.answer1}</h3>
+			</div>
+		{/if}
+
+		{#if !isShared}
+			<div>
 				<h2 class="px-10 text-center font-heading text-3xl text-heading leading-none">
 					{isCorrect ? 'Nailed it!' : 'Mmh nope...'}
 				</h2>
-			{/if}
 
-			<SectionHeading className="my-0">"{fact.answer1}" is the right answer</SectionHeading>
-		</div>
+				<SectionHeading className="my-0">"{fact.answer1}" is the right answer</SectionHeading>
+			</div>
+		{/if}
 	</header>
 
 	{#if fact.fun_fact_image_url}
@@ -68,7 +76,7 @@
 				<NavigationButton href="/success">Finish</NavigationButton>
 			{/if}
 		{:else}
-			<NavigationButton href="/">Take the quizz!</NavigationButton>
+			<NavigationButton href="/">Take the quiz!</NavigationButton>
 		{/if}
 	</div>
 </Section>

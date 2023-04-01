@@ -29,7 +29,7 @@
 		<p class="text-center text-lg">If you wanna learn more, hit the button for another five!</p>
 		<NavigationButton href="/">Give me five 🖐️</NavigationButton>
 		<NavigationButton on:click={handleCopy} className="bg-background"
-			>{copied ? 'URL COPIED!' : 'Share quizz'}</NavigationButton
+			>{copied ? 'URL COPIED!' : 'Share quiz'}</NavigationButton
 		>
 	</div>
 
