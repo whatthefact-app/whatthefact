@@ -9,7 +9,7 @@
 	<a
 		{href}
 		class={cn(
-			'relative z-10 grid h-[68px] w-full max-w-sm place-items-center rounded-[29px] bg-brand px-8 font-heading text-[1.6875rem] font-extrabold text-black',
+			'relative z-10 grid h-[68px] w-full place-items-center rounded-[29px] bg-brand px-8 font-heading text-[1.6875rem] font-extrabold text-black',
 			className
 		)}
 	>
@@ -21,7 +21,7 @@
 	<button
 		on:click
 		class={cn(
-			'relative z-10 grid h-[68px] w-full max-w-sm place-items-center rounded-[29px] bg-brand px-8 font-heading text-[1.6875rem] font-extrabold text-black',
+			'relative z-10 grid h-[68px] w-full place-items-center rounded-[29px] bg-brand px-8 font-heading text-[1.6875rem] font-extrabold text-black',
 			className
 		)}
 	>
