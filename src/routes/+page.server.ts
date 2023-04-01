@@ -11,8 +11,6 @@ export const load = (async ({ request, url }) => {
 
 	const { data, error: dbError } = await supabase.from(TABLE_NAME).select().eq('country', country);
 
-	console.log('{country, data}', { country, data, dbError });
-
 	if (!data?.length || dbError) {
 		throw error(404, {
 			message: 'Not found'
