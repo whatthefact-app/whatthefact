@@ -1,9 +1,9 @@
-import { supabase } from '$lib/supabaseClient';
+import { TABLE_NAME, supabase } from '$lib/supabaseClient';
 import type { PageServerLoad } from './$types';
 import { error } from '@sveltejs/kit';
 
 export const load = (async ({ params, url }) => {
-	const { data } = await supabase.from('facts').select().eq('id', params.fact);
+	const { data } = await supabase.from(TABLE_NAME).select().eq('id', params.fact);
 
 	if (!data?.length) {
 		throw error(404, {

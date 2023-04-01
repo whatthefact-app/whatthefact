@@ -28,8 +28,6 @@
 		const isCorrect = selectedProposal === answer1;
 		goto(`/${params.fact}/a?c=${isCorrect ? 'y' : 'n'}`);
 	}
-
-	$: console.log('question_image_url', question_image_url);
 </script>
 
 {#if question_image_url}

@@ -9,53 +9,6 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      facts: {
-        Row: {
-          answer1: string
-          answer2: string
-          answer3: string
-          answer4: string
-          country: string
-          created_at: string | null
-          fun_fact: string
-          fun_fact_image_url: string | null
-          id: number
-          question: string
-          question_image_url: string | null
-          slug: number
-          updated_at: string | null
-        }
-        Insert: {
-          answer1: string
-          answer2: string
-          answer3: string
-          answer4: string
-          country: string
-          created_at?: string | null
-          fun_fact: string
-          fun_fact_image_url?: string | null
-          id: number
-          question: string
-          question_image_url?: string | null
-          slug: number
-          updated_at?: string | null
-        }
-        Update: {
-          answer1?: string
-          answer2?: string
-          answer3?: string
-          answer4?: string
-          country?: string
-          created_at?: string | null
-          fun_fact?: string
-          fun_fact_image_url?: string | null
-          id?: number
-          question?: string
-          question_image_url?: string | null
-          slug?: number
-          updated_at?: string | null
-        }
-      }
       facts_legacy: {
         Row: {
           answer_1: string
@@ -106,6 +59,53 @@ export interface Database {
           question?: string
           question_image_url?: string | null
           slug?: string
+          updated_at?: string | null
+        }
+      }
+      factss: {
+        Row: {
+          answer1: string | null
+          answer2: string | null
+          answer3: string | null
+          answer4: string | null
+          country: string | null
+          created_at: string | null
+          fun_fact: string | null
+          fun_fact_image_url: string | null
+          id: number
+          question: string | null
+          question_image_url: string | null
+          slug: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          answer1?: string | null
+          answer2?: string | null
+          answer3?: string | null
+          answer4?: string | null
+          country?: string | null
+          created_at?: string | null
+          fun_fact?: string | null
+          fun_fact_image_url?: string | null
+          id: number
+          question?: string | null
+          question_image_url?: string | null
+          slug?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          answer1?: string | null
+          answer2?: string | null
+          answer3?: string | null
+          answer4?: string | null
+          country?: string | null
+          created_at?: string | null
+          fun_fact?: string | null
+          fun_fact_image_url?: string | null
+          id?: number
+          question?: string | null
+          question_image_url?: string | null
+          slug?: number | null
           updated_at?: string | null
         }
       }

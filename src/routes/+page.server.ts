@@ -1,4 +1,4 @@
-import { supabase } from '$lib/supabaseClient';
+import { TABLE_NAME, supabase } from '$lib/supabaseClient';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { shuffle } from '../utils/shuffle';
@@ -7,10 +7,13 @@ import { MAX_FACTS_PER_ROUND } from '../constants/constants';
 
 export const load = (async ({ request, url }) => {
 	const country =
-		url.searchParams.get('country') || request.headers.get('x-vercel-ip-country') || 'PT';
-	const { data } = await supabase.from('facts').select().eq('country', country);
+		url.searchParams.get('country') || request.headers.get('x-vercel-ip-country') || 'FR';
 
-	if (!data?.length) {
+	const { data, error: dbError } = await supabase.from(TABLE_NAME).select().eq('country', country);
+
+	console.log('{country, data}', { country, data, dbError });
+
+	if (!data?.length || dbError) {
 		throw error(404, {
 			message: 'Not found'
 		});
