@@ -37,7 +37,9 @@
 			</div>
 		{:else}
 			<div class="flex flex-col gap-4">
-				<SectionHeading>What the <span class="text-purple-500"> fact?! </span></SectionHeading>
+				<SectionHeading className="text-[32px]"
+					>What the <span class="text-purple-500"> fact?! </span></SectionHeading
+				>
 
 				<p class="text-center text-lg">{fact.question}</p>
 
