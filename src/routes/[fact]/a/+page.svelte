@@ -85,7 +85,7 @@
 				<NavigationButton on:click={() => handleNext('/success')}>Let's keep going</NavigationButton
 				>
 			{:else}
-				<NavigationButton on:click={() => handleNext(`/${$facts[0].id}`)}>Next</NavigationButton>
+				<NavigationButton on:click={() => handleNext(`/${$facts[1].id}`)}>Next</NavigationButton>
 			{/if}
 		{:else}
 			<NavigationButton href="/">Take the quiz!</NavigationButton>
