@@ -28,7 +28,8 @@
 
 	<div class="flex w-full flex-col gap-4">
 		<p class="text-center text-lg">If you wanna learn more, hit the button for another five!</p>
-		<NavigationButton href={!!$facts[1] ? `/${nextFact.id}` : '/'}>Give me five 🖐️</NavigationButton
+		<NavigationButton href={!!$facts[1] ? `/${$facts[1].id}` : '/'}
+			>Give me five 🖐️</NavigationButton
 		>
 		<NavigationButton on:click={handleCopy} className="bg-background"
 			>{copied ? 'URL COPIED!' : 'Share quiz'}</NavigationButton
