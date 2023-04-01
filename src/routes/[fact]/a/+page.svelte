@@ -48,11 +48,11 @@
 		</div>
 	</header>
 
-	{#if fact.fun_fact_image_url}
-		<div class="w-full overflow-hidden rounded-[40px]">
+	<div class="h-48 w-full overflow-hidden rounded-[40px]">
+		{#if fact.fun_fact_image_url}
 			<Image src={fact.fun_fact_image_url} alt="Fun fact image" />
-		</div>
-	{/if}
+		{/if}
+	</div>
 
 	<p class="text-lg leading-7">{fact.fun_fact}</p>
 
