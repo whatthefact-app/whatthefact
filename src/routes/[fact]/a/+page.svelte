@@ -34,8 +34,12 @@
 <Section className="gap-10 py-10 bg-white h-full">
 	<header class="flex flex-col items-center gap-4">
 		{#if !isShared}
-			<div class="h-12">
-				<img src={isCorrect ? peacock : snail} alt={isCorrect ? 'Peacock' : 'Snail'} />
+			<div class="h-20">
+				<img
+					src={isCorrect ? peacock : snail}
+					alt={isCorrect ? 'Peacock' : 'Snail'}
+					class="h-full w-full"
+				/>
 			</div>
 		{:else}
 			<div class="flex flex-col gap-4">
