@@ -4,6 +4,37 @@
 	import SectionHeading from '../../components/SectionHeading.svelte';
 	import NavigationButton from '../../components/NavigationButton.svelte';
 	import { facts } from '../../stores/facts';
+	import confetti from 'canvas-confetti';
+	import { onMount } from 'svelte';
+
+	const triggerConf = () => {
+		confetti({
+			zIndex: 999,
+			particleCount: 300,
+			spread: 150,
+			origin: {
+				x: Math.random(),
+				y: Math.random() - 0.2
+			}
+		});
+	};
+
+	onMount(() => {
+		setTimeout(() => {
+			triggerConf();
+			triggerConf();
+		}, 250);
+
+		setTimeout(() => {
+			triggerConf();
+			triggerConf();
+		}, 500);
+
+		setTimeout(() => {
+			triggerConf();
+			triggerConf();
+		}, 1500);
+	});
 
 	let copied = false;
 

@@ -36,6 +36,7 @@
 	"dependencies": {
 		"@supabase/supabase-js": "^2.13.0",
 		"@sveltejs/adapter-vercel": "^2.4.1",
+		"canvas-confetti": "^1.6.0",
 		"clsx": "^1.2.1",
 		"tailwind-merge": "^1.11.0"
 	}
