@@ -65,7 +65,7 @@
 
 	{#if selectedProposal}
 		<NavigationButton
-			className="fixed bottom-6 right-6 left-6 sm:inset-x-auto w-auto max-w-lg sm:w-full"
+			className="fixed bottom-6 right-6 left-6 sm:inset-x-auto w-auto max-w-xl sm:w-full"
 			on:click={handleSubmit}>Go for it!</NavigationButton
 		>
 	{/if}
