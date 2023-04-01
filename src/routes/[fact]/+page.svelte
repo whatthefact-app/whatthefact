@@ -9,22 +9,24 @@
 	import { shuffle } from '../../utils/shuffle';
 	import type { Fact } from '../../types/types';
 	import NavigationButton from '../../components/NavigationButton.svelte';
+	import { goto } from '$app/navigation';
 
 	const { params } = $page;
 
 	const { question, answer1, answer2, answer3, answer4, question_image_url } = $facts[0];
 	const proposals = shuffle([answer1, answer2, answer3, answer4]);
 
-	function getNextStep({ proposal, answer }: { proposal: string; answer: string }) {
-		return proposal === answer ? `/${params.fact}/a?c=y` : `/${params.fact}/a?c=n`;
-	}
-
 	type Answer = Fact['answer1'];
 
 	let selectedProposal: Answer | null = null;
 
-	function handleClick(proposal: Answer) {
+	function handleSelect(proposal: Answer) {
 		selectedProposal = proposal;
+	}
+
+	function handleSubmit() {
+		const isCorrect = selectedProposal === answer1;
+		goto(`/${params.fact}/a?c=${isCorrect ? 'y' : 'n'}`);
 	}
 
 	$: console.log('question_image_url', question_image_url);
@@ -54,12 +56,12 @@
 	<ul class="flex w-full flex-col items-start gap-4">
 		{#each proposals as proposal}
 			<li class="w-full">
-				<Toggle on:click={() => handleClick(proposal)} {proposal} {selectedProposal} />
+				<Toggle on:click={() => handleSelect(proposal)} {proposal} {selectedProposal} />
 			</li>
 		{/each}
 	</ul>
 
 	{#if selectedProposal}
-		<NavigationButton>Go for it!</NavigationButton>
+		<NavigationButton on:click={handleSubmit}>Go for it!</NavigationButton>
 	{/if}
 </Section>
