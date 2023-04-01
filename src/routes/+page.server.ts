@@ -17,8 +17,10 @@ export const load = (async ({ request, url }) => {
 		});
 	}
 
+	const suffledData: Fact[] = shuffle(data).slice(0, MAX_FACTS_PER_ROUND * ROUNDS);
+
 	return {
-		facts: shuffle(data).slice(0, MAX_FACTS_PER_ROUND * ROUNDS) as Fact[],
+		facts: suffledData,
 		country
 	};
 }) satisfies PageServerLoad;

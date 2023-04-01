@@ -2,7 +2,6 @@
 	import type { PageData } from './$types';
 	import NavigationButton from '../components/NavigationButton.svelte';
 	import { facts } from '../stores/facts';
-	import { shuffle } from '../utils/shuffle';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
@@ -18,7 +17,7 @@
 
 	currentCountry = paramCountry || data.country;
 
-	$: facts.set(shuffle(data.facts));
+	$: facts.set(data.facts);
 
 	$: if (browser) goto(`/?country=${currentCountry}`, { keepFocus: true, invalidateAll: true });
 </script>
@@ -30,7 +29,6 @@
 
 	<p>You're playing in</p>
 
-	<!-- <form class="flex w-full justify-center"> -->
 	<select
 		bind:value={currentCountry}
 		class="grid h-[68px] w-full place-items-center rounded-[29px] bg-white px-6 py-3 font-heading text-[1.6875rem] font-extrabold text-black"
@@ -41,7 +39,6 @@
 		<option value="AU" selected={currentCountry === 'AU'}>{countries.AU}</option>
 		<option value="BR" selected={currentCountry === 'BR'}>{countries.BR}</option>
 	</select>
-	<!-- </form> -->
 
 	<NavigationButton href={`/${$facts[0].id}`}>Play</NavigationButton>
 </Section>
