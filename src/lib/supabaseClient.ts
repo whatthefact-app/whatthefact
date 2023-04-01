@@ -5,4 +5,4 @@ import type { Database } from '../types/supabase';
 const SUPABASE_URL = `https://${SUPABASE_PROJECT_ID}.supabase.co`;
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_ANON_KEY);
-export const TABLE_NAME = 'factss';
+export const TABLE_NAME = 'facts';
