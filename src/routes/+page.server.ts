@@ -3,7 +3,7 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { shuffle } from '../utils/shuffle';
 import type { Fact } from '../types/types';
-import { MAX_FACTS_PER_ROUND } from '../constants/constants';
+import { MAX_FACTS_PER_ROUND, ROUNDS } from '../constants/constants';
 
 export const load = (async ({ request, url }) => {
 	const country =
@@ -18,7 +18,7 @@ export const load = (async ({ request, url }) => {
 	}
 
 	return {
-		facts: shuffle(data).slice(0, MAX_FACTS_PER_ROUND) as Fact[],
+		facts: shuffle(data).slice(0, MAX_FACTS_PER_ROUND * ROUNDS) as Fact[],
 		country
 	};
 }) satisfies PageServerLoad;

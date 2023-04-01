@@ -12,7 +12,9 @@
 	const { fact, query } = data;
 
 	const nextFact = $facts[1];
+	const hasFinishedRouned = $facts.length % 5 === 0;
 	facts.set($facts.slice(1));
+
 	const isCorrect = query === 'y';
 	const isShared = query !== 'y' && query !== 'n';
 
@@ -71,10 +73,10 @@
 			<NavigationButton className="bg-background" on:click={handleCopy}
 				>{copied ? 'URL COPIED!' : 'Share fact!'}</NavigationButton
 			>
-			{#if nextFact}
-				<NavigationButton href={`/${nextFact.id}`}>Next</NavigationButton>
-			{:else}
+			{#if hasFinishedRouned}
 				<NavigationButton href="/success">Finish</NavigationButton>
+			{:else if nextFact}
+				<NavigationButton href={`/${nextFact.id}`}>Next</NavigationButton>
 			{/if}
 		{:else}
 			<NavigationButton href="/">Take the quiz!</NavigationButton>

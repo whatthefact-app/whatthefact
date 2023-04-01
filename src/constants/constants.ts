@@ -9,3 +9,4 @@ export const countries: Record<Country, string> = {
 };
 
 export const MAX_FACTS_PER_ROUND = 5;
+export const ROUNDS = 3;

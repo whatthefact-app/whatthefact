@@ -3,8 +3,12 @@
 	import whale from '$lib/assets/images/whale.svg';
 	import SectionHeading from '../../components/SectionHeading.svelte';
 	import NavigationButton from '../../components/NavigationButton.svelte';
+	import { facts } from '../../stores/facts';
 
 	let copied = false;
+
+	const hasNextRound = $facts.length > 5;
+	const nextFact = $facts[1];
 
 	function handleCopy() {
 		navigator.clipboard.writeText('https://WhatTheFact.app');
@@ -27,7 +31,9 @@
 
 	<div class="flex w-full flex-col gap-4">
 		<p class="text-center text-lg">If you wanna learn more, hit the button for another five!</p>
-		<NavigationButton href="/">Give me five 🖐️</NavigationButton>
+		<NavigationButton href={hasNextRound ? `/${nextFact.id}` : '/'}
+			>Give me five 🖐️</NavigationButton
+		>
 		<NavigationButton on:click={handleCopy} className="bg-background"
 			>{copied ? 'URL COPIED!' : 'Share quiz'}</NavigationButton
 		>
