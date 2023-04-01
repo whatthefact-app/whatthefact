@@ -54,7 +54,7 @@
 		{/if}
 
 		{#if !isShared}
-			<div>
+			<div class="flex flex-col gap-4">
 				<h2 class="px-10 text-center font-heading text-3xl text-heading leading-none">
 					{isCorrect ? 'Nailed it!' : 'Mmh nope...'}
 				</h2>
