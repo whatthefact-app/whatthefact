@@ -14,7 +14,7 @@
 	const nextFact = $facts[1];
 	facts.set($facts.slice(1));
 	const isCorrect = query === 'y';
-	const isShared = query === 'y';
+	const isShared = query !== 'y' && query !== 'n';
 
 	// reset copied after 2 seconds
 	$: if (copied)
@@ -26,7 +26,7 @@
 
 	function handleCopy() {
 		console.log('first');
-		navigator.clipboard.writeText('https://WhatTheFact.app');
+		navigator.clipboard.writeText(`https://WhatTheFact.app/${fact.id}/a`);
 		copied = true;
 	}
 </script>
@@ -67,7 +67,7 @@
 				<NavigationButton href="/share">Finish</NavigationButton>
 			{/if}
 		{:else}
-			<NavigationButton href="/">Take the quiz</NavigationButton>
+			<NavigationButton href="/">Take the quiz!</NavigationButton>
 		{/if}
 	</div>
 </Section>
