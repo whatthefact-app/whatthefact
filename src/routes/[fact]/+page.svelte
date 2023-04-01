@@ -42,7 +42,7 @@
 	</div>
 {/if}
 
-<Section>
+<Section className="relative pb-16">
 	{#if !question_image_url}
 		<div class="mt-6 rounded-xl bg-white px-3 font-heading text-[1.3125rem] font-semibold">
 			{MAX_FACTS_PER_ROUND - $facts.length + 1} / {MAX_FACTS_PER_ROUND}
@@ -60,6 +60,9 @@
 	</ul>
 
 	{#if selectedProposal}
-		<NavigationButton on:click={handleSubmit}>Go for it!</NavigationButton>
+		<NavigationButton
+			className="fixed bottom-6 right-6 left-6 sm:inset-x-auto w-auto max-w-lg sm:w-full"
+			on:click={handleSubmit}>Go for it!</NavigationButton
+		>
 	{/if}
 </Section>
