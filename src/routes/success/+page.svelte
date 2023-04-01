@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Section from '../../components/Section.svelte';
-	import whale from '$lib/assets/images/whale.svg';
+	import whale from '$lib/assets/images/whale.png';
 	import SectionHeading from '../../components/SectionHeading.svelte';
 	import NavigationButton from '../../components/NavigationButton.svelte';
 	import { facts } from '../../stores/facts';
@@ -54,7 +54,7 @@
 	</header>
 
 	<div class="h-36">
-		<img src={whale} alt="Whale" />
+		<img src={whale} alt="Whale" class="h-36" />
 	</div>
 
 	<div class="flex w-full flex-col gap-4">

@@ -4,9 +4,8 @@
 	import SectionHeading from '../../../components/SectionHeading.svelte';
 	import type { PageData } from './$types';
 	import { facts } from '../../../stores/facts';
-	// import peacock from '$lib/assets/images/peacock.svg';
 	import peacock from '$lib/assets/images/peacock.png';
-	import snail from '$lib/assets/images/snail.svg';
+	import snail from '$lib/assets/images/snail.png';
 	import Image from '../../../components/Image.svelte';
 	import { goto } from '$app/navigation';
 

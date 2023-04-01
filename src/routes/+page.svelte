@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
-	import beetle from '$lib/assets/images/beetle.svg';
+	import beetle from '$lib/assets/images/beetle.png';
 	import PageHeading from '../components/PageHeading.svelte';
 	import { countries } from '../constants/constants';
 	import Section from '../components/Section.svelte';
@@ -25,7 +25,7 @@
 <Section className="gap-8 pt-16">
 	<PageHeading>Test your knowledge about nature around you.</PageHeading>
 
-	<img src={beetle} alt="Beetle" />
+	<img src={beetle} alt="Beetle" class="h-28" />
 
 	<p>You're playing in</p>
 
