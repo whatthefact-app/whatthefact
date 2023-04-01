@@ -74,7 +74,7 @@
 				>{copied ? 'URL COPIED!' : 'Share fact!'}</NavigationButton
 			>
 			{#if hasFinishedRouned}
-				<NavigationButton href="/success">Finish</NavigationButton>
+				<NavigationButton href="/success">Let's keep going</NavigationButton>
 			{:else if nextFact}
 				<NavigationButton href={`/${nextFact.id}`}>Next</NavigationButton>
 			{/if}

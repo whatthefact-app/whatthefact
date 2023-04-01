@@ -4,7 +4,7 @@
 	import Toggle from '../../components/Toggle.svelte';
 	import Section from '../../components/Section.svelte';
 	import SectionHeading from '../../components/SectionHeading.svelte';
-	import { MAX_FACTS_PER_ROUND } from '../../constants/constants';
+	import { MAX_FACTS_PER_ROUND, ROUNDS } from '../../constants/constants';
 	import { facts } from '../../stores/facts';
 	import { shuffle } from '../../utils/shuffle';
 	import type { Fact } from '../../types/types';
@@ -28,6 +28,10 @@
 		const isCorrect = selectedProposal === answer1;
 		goto(`/${params.fact}/a?c=${isCorrect ? 'y' : 'n'}`);
 	}
+
+	const count = `${
+		MAX_FACTS_PER_ROUND - ($facts.length % MAX_FACTS_PER_ROUND)
+	} / ${MAX_FACTS_PER_ROUND}`;
 </script>
 
 {#if question_image_url}
@@ -37,7 +41,7 @@
 		<div
 			class="absolute bottom-6 left-6 mt-6 rounded-xl bg-white px-3 font-heading text-[1.3125rem] font-semibold"
 		>
-			{MAX_FACTS_PER_ROUND - $facts.length + 1} / {MAX_FACTS_PER_ROUND}
+			{count}
 		</div>
 	</div>
 {/if}
@@ -45,7 +49,7 @@
 <Section className="relative pb-16">
 	{#if !question_image_url}
 		<div class="mt-6 rounded-xl bg-white px-3 font-heading text-[1.3125rem] font-semibold">
-			{MAX_FACTS_PER_ROUND - $facts.length + 1} / {MAX_FACTS_PER_ROUND}
+			{count}
 		</div>
 	{/if}
 
