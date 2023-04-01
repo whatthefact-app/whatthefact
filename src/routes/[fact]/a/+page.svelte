@@ -31,6 +31,24 @@
 </script>
 
 <Section className="gap-10 py-10 bg-white h-full">
+	<header class="flex flex-col items-center gap-4">
+		<div class="h-12">
+			{#if !isShared}
+				<img src={isCorrect ? peacock : snail} alt={isCorrect ? 'Peacock' : 'Snail'} />
+			{/if}
+		</div>
+
+		<div>
+			{#if !isShared}
+				<h2 class="px-10 text-center font-heading text-3xl text-heading leading-none">
+					{isCorrect ? 'Nailed it!' : 'Mmh nope...'}
+				</h2>
+			{/if}
+
+			<SectionHeading className="my-0">"{fact.answer1}" is the right answer</SectionHeading>
+		</div>
+	</header>
+
 	{#if fact.fun_fact_image_url}
 		<div class="w-full overflow-hidden rounded-[40px]">
 			<Image src={fact.fun_fact_image_url} alt="Fun fact image" />
