@@ -16,7 +16,6 @@
 	const isCorrect = query === 'y';
 	const isShared = query !== 'y' && query !== 'n';
 
-	// reset copied after 2 seconds
 	$: if (copied)
 		setTimeout(() => {
 			copied = false;
