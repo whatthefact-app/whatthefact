@@ -5,3 +5,5 @@ export const countries: Record<Country, string> = {
 	PT: 'Portugal',
 	USA: 'USA'
 };
+
+export const MAX_FACTS_PER_ROUND = 5;

@@ -3,11 +3,11 @@
 	import NavigationButton from '../components/NavigationButton.svelte';
 	import { facts } from '../stores/facts';
 	import { shuffle } from '../utils/shuffle';
-	import type { Country, Fact } from '../types/types';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
-	import { countries } from '../constants/constants';
+	import beetle from '$lib/assets/images/beetle.svg';
+	import PageHeading from '../components/PageHeading.svelte';
 
 	export let data: PageData;
 
@@ -21,10 +21,10 @@
 	$: if (browser) goto(`/?country=${currentCountry}`, { keepFocus: true, invalidateAll: true });
 </script>
 
-<section class="flex flex-col items-center gap-12 pt-16">
-	<h1 class="text-center font-heading text-heading font-black leading-none">
-		Test your knowledge about nature around you.
-	</h1>
+<section class="flex flex-col items-center gap-8 pt-16">
+	<PageHeading>Test your knowledge about nature around you.</PageHeading>
+
+	<img src={beetle} alt="Beetle" />
 
 	<p>You're playing in</p>
 

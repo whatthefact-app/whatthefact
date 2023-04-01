@@ -3,7 +3,7 @@
 </script>
 
 <div class="grid place-items-center bg-background">
-	<main class="flex min-h-[100dvh] max-w-lg flex-col px-6 text-black">
+	<main class="flex h-full min-h-[100dvh] max-w-lg flex-col text-black">
 		<slot />
 	</main>
 </div>

@@ -11,8 +11,6 @@
 
 <button on:click={handleCopy}>copy</button>
 
-<!-- {if copied}
-  <p>copied</p>
-{/if} -->
-
-<p>copied</p>
+{#if copied}
+	<p>copied</p>
+{/if}
