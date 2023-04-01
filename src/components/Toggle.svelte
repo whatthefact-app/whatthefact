@@ -9,7 +9,7 @@
 
 <button
 	class={cn(
-		'flex w-full rounded-[20px] border-2 border-transparent bg-white px-6 py-5 text-base font-normal transition-colors duration-300',
+		'flex w-full rounded-[20px] border-2 border-transparent bg-white px-6 py-5 text-base font-normal transition-colors duration-300 first-letter:uppercase',
 		active && 'border-purple-300 font-bold'
 	)}
 	on:click
