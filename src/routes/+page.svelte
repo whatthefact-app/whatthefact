@@ -9,6 +9,7 @@
 	import beetle from '$lib/assets/images/beetle.svg';
 	import PageHeading from '../components/PageHeading.svelte';
 	import { countries } from '../constants/constants';
+	import Section from '../components/Section.svelte';
 
 	export let data: PageData;
 
@@ -22,7 +23,7 @@
 	$: if (browser) goto(`/?country=${currentCountry}`, { keepFocus: true, invalidateAll: true });
 </script>
 
-<section class="flex flex-col items-center gap-8 pt-16">
+<Section className="gap-8 pt-16">
 	<PageHeading>Test your knowledge about nature around you.</PageHeading>
 
 	<img src={beetle} alt="Beetle" />
@@ -43,4 +44,4 @@
 	</form>
 
 	<NavigationButton href={`/${$facts[0].id}`}>Play</NavigationButton>
-</section>
+</Section>
