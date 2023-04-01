@@ -48,18 +48,18 @@
 		</div>
 	</header>
 
-	<div class="h-48 w-full overflow-hidden rounded-[40px]">
-		{#if fact.fun_fact_image_url}
+	{#if fact.fun_fact_image_url}
+		<div class="w-full overflow-hidden rounded-[40px]">
 			<Image src={fact.fun_fact_image_url} alt="Fun fact image" />
-		{/if}
-	</div>
+		</div>
+	{/if}
 
 	<p class="text-lg leading-7">{fact.fun_fact}</p>
 
 	<div class="flex w-full flex-col items-center gap-4">
 		{#if !isShared}
 			<NavigationButton className="bg-background" on:click={handleCopy}
-				>{copied ? 'Copied!' : 'Share fact!'}</NavigationButton
+				>{copied ? 'URL COPIED!' : 'Share fact!'}</NavigationButton
 			>
 			{#if nextFact}
 				<NavigationButton href={`/${nextFact.id}`}>Next</NavigationButton>
