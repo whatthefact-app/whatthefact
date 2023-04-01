@@ -1,11 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Image from '../../components/Image.svelte';
+	import Toggle from '../../components/Toggle.svelte';
 	import Section from '../../components/Section.svelte';
 	import SectionHeading from '../../components/SectionHeading.svelte';
 	import { MAX_FACTS_PER_ROUND } from '../../constants/constants';
 	import { facts } from '../../stores/facts';
 	import { shuffle } from '../../utils/shuffle';
+	import type { Fact } from '../../types/types';
+	import NavigationButton from '../../components/NavigationButton.svelte';
 
 	const { params } = $page;
 
@@ -14,6 +17,14 @@
 
 	function getNextStep({ proposal, answer }: { proposal: string; answer: string }) {
 		return proposal === answer ? `/${params.fact}/a?c=y` : `/${params.fact}/a?c=n`;
+	}
+
+	type Answer = Fact['answer1'];
+
+	let selectedProposal: Answer | null = null;
+
+	function handleClick(proposal: Answer) {
+		selectedProposal = proposal;
 	}
 
 	$: console.log('question_image_url', question_image_url);
@@ -43,11 +54,12 @@
 	<ul class="flex w-full flex-col items-start gap-4">
 		{#each proposals as proposal}
 			<li class="w-full">
-				<a
-					class="flex grow rounded-[20px] bg-white px-6 py-5 text-base"
-					href={getNextStep({ proposal, answer: answer1 })}>{proposal}</a
-				>
+				<Toggle on:click={() => handleClick(proposal)} {proposal} {selectedProposal} />
 			</li>
 		{/each}
 	</ul>
+
+	{#if selectedProposal}
+		<NavigationButton>Go for it!</NavigationButton>
+	{/if}
 </Section>

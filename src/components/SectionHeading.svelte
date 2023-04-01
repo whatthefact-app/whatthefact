@@ -4,6 +4,6 @@
 	export let className: string | undefined = undefined;
 </script>
 
-<h1 class={cn('my-6 text-center font-heading text-[1.6875rem] font-bold leading-none', className)}>
+<h1 class={cn('mt-6 text-center font-heading text-[1.6875rem] font-bold leading-none', className)}>
 	<slot />
 </h1>
