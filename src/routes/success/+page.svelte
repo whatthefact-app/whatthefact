@@ -7,9 +7,6 @@
 
 	let copied = false;
 
-	const hasNextRound = $facts.length > 5;
-	const nextFact = $facts[1];
-
 	function handleCopy() {
 		navigator.clipboard.writeText('https://WhatTheFact.app');
 		copied = true;
@@ -31,8 +28,7 @@
 
 	<div class="flex w-full flex-col gap-4">
 		<p class="text-center text-lg">If you wanna learn more, hit the button for another five!</p>
-		<NavigationButton href={hasNextRound ? `/${nextFact.id}` : '/'}
-			>Give me five 🖐️</NavigationButton
+		<NavigationButton href={!!$facts[1] ? `/${nextFact.id}` : '/'}>Give me five 🖐️</NavigationButton
 		>
 		<NavigationButton on:click={handleCopy} className="bg-background"
 			>{copied ? 'URL COPIED!' : 'Share quiz'}</NavigationButton

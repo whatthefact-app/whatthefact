@@ -10,10 +10,12 @@
 	import type { Fact } from '../../types/types';
 	import NavigationButton from '../../components/NavigationButton.svelte';
 	import { goto } from '$app/navigation';
+	import type { PageData } from './$types';
 
 	const { params } = $page;
+	export let data: PageData;
 
-	const { question, answer1, answer2, answer3, answer4, question_image_url } = $facts[0];
+	const { question, answer1, answer2, answer3, answer4, question_image_url } = data.fact;
 	const proposals = shuffle([answer1, answer2, answer3, answer4]);
 
 	type Answer = Fact['answer1'];

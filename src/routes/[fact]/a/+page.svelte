@@ -7,13 +7,12 @@
 	import peacock from '$lib/assets/images/peacock.svg';
 	import snail from '$lib/assets/images/snail.svg';
 	import Image from '../../../components/Image.svelte';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 	const { fact, query } = data;
 
-	const nextFact = $facts[1];
 	const hasFinishedRouned = $facts.length % 5 === 0;
-	facts.set($facts.slice(1));
 
 	const isCorrect = query === 'y';
 	const isShared = query !== 'y' && query !== 'n';
@@ -28,6 +27,11 @@
 	function handleCopy() {
 		navigator.clipboard.writeText(`https://WhatTheFact.app/${fact.id}/a`);
 		copied = true;
+	}
+
+	function handleNext(url: string) {
+		facts.set($facts.slice(1));
+		goto(url);
 	}
 </script>
 
@@ -78,9 +82,10 @@
 				>{copied ? 'URL COPIED!' : 'Share fact!'}</NavigationButton
 			>
 			{#if hasFinishedRouned}
-				<NavigationButton href="/success">Let's keep going</NavigationButton>
-			{:else if nextFact}
-				<NavigationButton href={`/${nextFact.id}`}>Next</NavigationButton>
+				<NavigationButton on:click={() => handleNext('/success')}>Let's keep going</NavigationButton
+				>
+			{:else}
+				<NavigationButton on:click={() => handleNext(`/${$facts[0].id}`)}>Next</NavigationButton>
 			{/if}
 		{:else}
 			<NavigationButton href="/">Take the quiz!</NavigationButton>
