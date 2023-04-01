@@ -14,8 +14,6 @@
 		)}
 	>
 		<slot />
-
-		<!-- <div class="absolute inset-0 z-0 translate-y-1 rounded-[29px] bg-gray-300" /> -->
 	</a>
 {:else}
 	<button
